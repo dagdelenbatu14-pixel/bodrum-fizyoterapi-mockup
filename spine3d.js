@@ -33,6 +33,7 @@ const REGIONS = {
   }
 };
 const ORDER = ['boyun', 'sirt', 'bel', 'legen'];
+const COLORS = { boyun: '#6fbf5a', sirt: '#3fb3a8', bel: '#e0a33a', legen: '#d4708f' };
 const waHref = r => `https://wa.me/${WA}?text=` + encodeURIComponent(`Merhaba, ${REGIONS[r].title.toLowerCase()} bölgem için değerlendirme randevusu almak istiyorum.`);
 
 /* fill the overlay panels */
@@ -69,7 +70,7 @@ if (renderer) {
   const scene = new THREE.Scene();
   const BG = new THREE.Color('#1a1310');
   scene.background = BG;
-  scene.fog = new THREE.Fog(BG, 48, 95);
+  scene.fog = new THREE.Fog(BG, 90, 170);
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
   scene.environmentIntensity = 0.45;
@@ -107,7 +108,7 @@ if (renderer) {
   const add = (r, mesh) => { mesh.userData.region = r; parts[r].push(mesh); pickables.push(mesh); return mesh; };
 
   plan.forEach(([r, n, h, gap, rad]) => {
-    const mBone = bone(), mDisc = discMat(); mats[r].push(mBone, mDisc);
+    const mBone = bone(), mDisc = discMat(); mBone.emissive.set(COLORS[r]); mDisc.emissive.set(COLORS[r]); mats[r].push(mBone, mDisc);
     for (let i = 0; i < n; i++) {
       const u = (dist + h / 2) / LEN;
       const p = curve.getPointAt(u), t = curve.getTangentAt(u);
@@ -175,7 +176,7 @@ if (renderer) {
   /* sacrum, coccyx and a stylised pelvic ring */
   {
     const r = 'legen';
-    const mB = bone(); mats[r].push(mB);
+    const mB = bone(); mB.emissive.set(COLORS[r]); mats[r].push(mB);
     const u = Math.min(0.985, (dist + 1.05) / LEN);
     const p = curve.getPointAt(u), t = curve.getTangentAt(u);
     const sh = new THREE.Shape();
@@ -229,12 +230,28 @@ if (renderer) {
     });
   });
 
+  /* overview: the four regions named beside the column, each in its colour */
+  const regLabs = ORDER.map(k => {
+    const el = document.createElement('span');
+    el.className = 'spot reg'; el.style.setProperty('--c', COLORS[k]);
+    el.innerHTML = `<i></i>${REGIONS[k].title}`;
+    hotBox.appendChild(el);
+    return { el, v: new THREE.Vector3(3.0, regionY[k], 0) };
+  });
+  navBtns.forEach(b => { const k = ORDER[+b.dataset.go - 1]; if (k) b.style.setProperty('--c', COLORS[k]); });
+  const spineH = new THREE.Box3().setFromObject(spine).getSize(new THREE.Vector3()).y;
+
   /* sizing */
   let W = 1, H = 1, wide = true;
   function resize() {
     W = canvas.clientWidth; H = canvas.clientHeight; wide = W > 900;
     renderer.setSize(W, H, false);
     camera.aspect = W / H; camera.updateProjectionMatrix();
+    // overview distance: the whole column between the bar and the region buttons (phones: above the text panel)
+    const room = wide ? (H - 64 - 96) / H : 0.42;
+    const fit = (spineH / 2 + 0.8) / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / room;
+    STOPS[0].d = fit; STOPS[5].d = fit * 0.94;
+    STOPS[0].y = STOPS[5].y = wide ? 0.6 : 0;
   }
   addEventListener('resize', resize); resize();
 
@@ -299,7 +316,7 @@ if (renderer) {
     yaw = lerp(yA, yB, f);
     spine.rotation.y = yaw;
 
-    const ty = lerp(A.y, B.y, f), d = lerp(A.d, B.d, f) * (wide ? 1 : 1.35);
+    const ty = lerp(A.y, B.y, f), d = lerp(A.d * (A.r && !wide ? 1.35 : 1), B.d * (B.r && !wide ? 1.35 : 1), f);
     camTgt.set(0, ty, 0);
     camPos.set(0, ty + d * 0.08, d);
     // a slow drift so held frames breathe
@@ -313,7 +330,10 @@ if (renderer) {
     // which stop are we at
     const near = Math.round(s), off = Math.abs(s - near);   // text follows the scroll exactly; the camera eases behind it
     const stopR = STOPS[near].r || null;
-    setActive(reduce ? hover : off < 0.35 ? (stopR || hover) : hover);
+    const overview = reduce || !stopR;
+    ORDER.forEach(k => mats[k].forEach(m => {
+      m.userData.target = hover === k ? 1 : off < 0.35 ? (overview ? 0.55 : stopR === k ? 1 : 0.06) : 0.3;
+    }));
     if (!reduce) stops.forEach((el, k) => {
       const o = k === near ? Math.max(0, 1 - off / 0.28) : 0;
       el.style.opacity = o.toFixed(3);
@@ -327,10 +347,22 @@ if (renderer) {
     // glow the chosen region
     ORDER.forEach(k => mats[k].forEach(m => {
       const tgt = m.userData.target || 0;
-      m.emissiveIntensity = lerp(m.emissiveIntensity, tgt * (m.isMeshPhysicalMaterial ? 1.1 : 0.75), 1 - Math.pow(0.002, dt));
+      m.userData.v = lerp(m.userData.v || 0, tgt, 1 - Math.pow(0.002, dt));
+      if (!m.userData.base) { m.userData.base = m.color.clone(); m.userData.tint = new THREE.Color(COLORS[k]); }
+      m.color.lerpColors(m.userData.base, m.userData.tint, m.userData.v * (m.isMeshPhysicalMaterial ? 0.95 : 0.85));
+      m.emissiveIntensity = m.userData.v * (m.isMeshPhysicalMaterial ? 0.5 : 0.22);
     }));
 
     renderer.render(scene, camera);
+
+    // region names in the overview
+    const showReg = overview && (reduce || off < 0.25);
+    regLabs.forEach(({ el, v }) => {
+      if (!showReg) { el.style.opacity = '0'; return; }
+      tmp.copy(v).project(camera);
+      el.style.opacity = '1';
+      el.style.transform = `translate(${((tmp.x + 1) / 2 * W).toFixed(1)}px, ${((1 - tmp.y) / 2 * H).toFixed(1)}px)`;
+    });
 
     // hotspot labels follow their anchors
     ORDER.forEach(k => {

@@ -85,6 +85,7 @@ html:not(.has-3d) .stop-hero { opacity: 1; visibility: visible; }
   background: #2a201b; color: #cfc4b4; transition: background-color .3s, color .3s, transform .25s var(--ease);
 }
 .tour-nav button:hover { transform: translateY(-2px); color: #fff; }
+.tour-nav button[style*='--c']::before { content: ''; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--c); margin-right: 8px; vertical-align: 1px; }
 .tour-nav button.on { background: var(--lit); color: #12200d; }
 .scroll-hint { position: absolute; right: var(--m); bottom: 30px; margin: 0; font-size: var(--step-small); color: #b7ab9b; opacity: calc(1 - var(--tour, 0) * 8); }
 .hotspots { position: absolute; inset: 0; pointer-events: none; }
@@ -93,6 +94,8 @@ html:not(.has-3d) .stop-hero { opacity: 1; visibility: visible; }
   font-size: .95rem; color: #f3ede2; opacity: 0; transition: opacity .4s; will-change: transform;
 }
 .spot i { position: relative; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--lit); flex: none; }
+.spot.reg { font-size: var(--step-lead); font-weight: 500; gap: 14px; }
+.spot.reg i, .spot.reg i::after { background: var(--c); }
 .spot i::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--lit); animation: ping 1.8s infinite; }
 .spot { padding: 0; }
 @keyframes ping { from { transform: scale(1); opacity: .6; } to { transform: scale(2.8); opacity: 0; } }
