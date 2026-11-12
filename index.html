@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=17">
 <link rel="alternate" hreflang="tr" href="https://dagdelenbatu14-pixel.github.io/bodrum-fizyoterapi-mockup/">
 <link rel="alternate" hreflang="en" href="https://dagdelenbatu14-pixel.github.io/bodrum-fizyoterapi-mockup/en/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%232a1d17%27/%3E%3Cg fill=%27%23e8e2d6%27%3E%3Crect x=%2713%27 y=%274%27 width=%276%27 height=%274%27 rx=%271.5%27/%3E%3Crect x=%2712%27 y=%279.5%27 width=%278%27 height=%274.5%27 rx=%271.5%27/%3E%3Crect x=%2711.5%27 y=%2715.5%27 width=%279%27 height=%275%27 rx=%271.5%27/%3E%3C/g%3E%3Cpath d=%27M11 22h10l-3 7h-4z%27 fill=%27%236fbf5a%27/%3E%3C/svg%3E">
@@ -108,69 +108,96 @@
       </div>
     </section>
 
-    <section class="apps" id="uygulamalar" aria-labelledby="h-app">
-      <h2 id="h-app" class="apps-head">Uygulama alanları</h2>
-      <div class="apps-list">
-        <article class="app" data-region="bel">
-          <h3><a href="hizmetler/osteopatik-manuel-terapi.html">Osteopatik manuel terapi</a></h3>
-          <div class="app-row">
-            <img loading="lazy" decoding="async" src="assets/muscles-and-bones-of-the-vertebral-column.jpg" alt="Omurga kas ve kemiklerini gösteren gravür" width="810" height="1100">
-            <ul>
-              <li>Omurga ve eklemlerde ağrı ve hareket kısıtlılığı</li>
-              <li>Eklem mobilizasyonu, yumuşak doku ve germe teknikleri</li>
-              <li>Egzersiz programıyla birlikte planlanır</li>
-              <li>Uygulama öncesi bilgilendirilmiş onam alınır</li>
-            </ul>
+    <section class="showcase" id="uygulamalar" aria-labelledby="h-app">
+      <div class="sc-inner">
+        <div class="sc-head">
+          <h2 id="h-app">Uygulama alanları</h2>
+          <p>Her uygulama, hekim tanısı ve değerlendirme sonrasında kişiye göre planlanır. Bir uygulama seçin.</p>
+        </div>
+        <ul class="sc-tabs" role="tablist" aria-label="Uygulamalar">
+          <li><button type="button" role="tab" id="sc-t0" aria-controls="sc-p0" aria-selected="true" tabindex="0" style="--c:#e0a33a"><i></i><span class="n">Osteopatik manuel terapi</span><span class="s">Omurga ve eklemler</span></button></li><li><button type="button" role="tab" id="sc-t1" aria-controls="sc-p1" aria-selected="false" tabindex="-1" style="--c:#3fb3a8"><i></i><span class="n">Skolyoz · 3D Schroth</span><span class="s">Omurganın üç boyutlu eğriliği</span></button></li><li><button type="button" role="tab" id="sc-t2" aria-controls="sc-p2" aria-selected="false" tabindex="-1" style="--c:#8dbb78"><i></i><span class="n">Klinik pilates</span><span class="s">Duruş ve gövde kontrolü</span></button></li><li><button type="button" role="tab" id="sc-t3" aria-controls="sc-p3" aria-selected="false" tabindex="-1" style="--c:#e0a33a"><i></i><span class="n">Reformer pilates</span><span class="s">Yay dirençli egzersiz</span></button></li><li><button type="button" role="tab" id="sc-t4" aria-controls="sc-p4" aria-selected="false" tabindex="-1" style="--c:#d4708f"><i></i><span class="n">Pelvik taban ve visseral osteopati</span><span class="s">Sakrum ve pelvik taban</span></button></li><li><button type="button" role="tab" id="sc-t5" aria-controls="sc-p5" aria-selected="false" tabindex="-1" style="--c:#8dbb78"><i></i><span class="n">Fibromiyalji</span><span class="s">Yaygın ağrı ve yorgunluk</span></button></li>
+        </ul>
+        <div class="sc-panels">
+        <article class="sc-panel on" role="tabpanel" id="sc-p0" aria-labelledby="sc-t0" style="--c:#e0a33a">
+          <figure class="sc-fig"><img src="assets/renders/osteopatik-manuel-terapi.webp" alt="3D omurga modeli, bel bölgesi turuncu vurgulu, yandan görünüm" width="960" height="1200"></figure>
+          <div class="sc-copy">
+            <p class="sc-region"><i></i>Bel bölgesi</p>
+            <h3>Osteopatik manuel terapi</h3>
+            <p class="sc-lead">Omurga ile kol ve bacak eklemlerindeki ağrı, işlev kaybı ve hareket kısıtlılıklarında kullanılan, elle uygulanan teknikler.</p>
+            <dl class="sc-facts">
+              <div><dt>Nasıl uygulanır</dt><dd>Eklem mobilizasyonu, yumuşak doku ve germe teknikleri; her zaman bir egzersiz programıyla birlikte.</dd></div>
+              <div><dt>Kimler için</dt><dd>Hekimin uygun gördüğü bel ve boyun fıtığıyla ilişkili ağrılar, omuz ve diz ağrıları, kas spazmları.</dd></div>
+              <div><dt>Bilmeniz gereken</dt><dd>Önce bilgilendirilmiş onamınız alınır. Kırık şüphesi ya da ilerleyen güç kaybı gibi durumlarda uygulama yapılmaz.</dd></div>
+            </dl>
+            <p class="sc-act"><a class="btn" href="https://wa.me/905330481070?text=Merhaba%2C%20Osteopatik%20manuel%20terapi%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click">Bu uygulama için yaz</a><a class="sc-more" href="hizmetler/osteopatik-manuel-terapi.html">Ayrıntılı bilgi</a></p>
+          </div>
+        </article><article class="sc-panel" role="tabpanel" id="sc-p1" aria-labelledby="sc-t1" style="--c:#3fb3a8" inert>
+          <figure class="sc-fig"><img src="assets/renders/skolyoz-3d-schroth.webp" alt="3D omurga modeli, sırt bölgesi turkuaz vurgulu, arkadan görünüm" width="960" height="1200"></figure>
+          <div class="sc-copy">
+            <p class="sc-region"><i></i>Sırt bölgesi</p>
+            <h3>Skolyoz · 3D Schroth</h3>
+            <p class="sc-lead">Skolyoz, omurganın üç boyutlu eğriliğidir. Schroth, eğrilik tipine göre düzenlenen, skolyoza özgü bir egzersiz yaklaşımıdır.</p>
+            <dl class="sc-facts">
+              <div><dt>Nasıl uygulanır</dt><dd>Düzeltme pozisyonları, gövdenin üç boyutlu uzatılması ve düzeltici solunum; kazanılan duruş günlük yaşama aktarılır.</dd></div>
+              <div><dt>Kimler için</dt><dd>Ortopedi hekiminin skolyoz tanısı koyup egzersiz önerdiği çocuk, ergen ve yetişkinler.</dd></div>
+              <div><dt>Bilmeniz gereken</dt><dd>Hekimin gerekli gördüğü korse ya da cerrahinin yerine geçmez; gerekirse onlarla birlikte yürütülür.</dd></div>
+            </dl>
+            <p class="sc-act"><a class="btn" href="https://wa.me/905330481070?text=Merhaba%2C%20Skolyoz%20%C2%B7%203D%20Schroth%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click">Bu uygulama için yaz</a><a class="sc-more" href="hizmetler/skolyoz-3d-schroth.html">Ayrıntılı bilgi</a></p>
+          </div>
+        </article><article class="sc-panel" role="tabpanel" id="sc-p2" aria-labelledby="sc-t2" style="--c:#8dbb78" inert>
+          <figure class="sc-fig"><img src="assets/renders/klinik-pilates.webp" alt="3D omurga modeli, tüm bölgeler renkli, yandan S eğrisi görünür" width="960" height="1200"></figure>
+          <div class="sc-copy">
+            <p class="sc-region"><i></i>Tüm omurga</p>
+            <h3>Klinik pilates</h3>
+            <p class="sc-lead">Pilates egzersiz sisteminin rehabilitasyon amacıyla, kişiye göre uyarlanmış biçimi.</p>
+            <dl class="sc-facts">
+              <div><dt>Nasıl uygulanır</dt><dd>Duruş analizi ve vücut ölçümleriyle başlar; mat, minder ya da reformer üzerinde, fizyoterapist gözetiminde.</dd></div>
+              <div><dt>Kimler için</dt><dd>Bel ve boyun fıtığı, skolyoz gibi omurga sorunlarında rehabilitasyonun parçası olarak; iş yükü ve duruşla ilişkili kas gerginliğinde.</dd></div>
+              <div><dt>Bilmeniz gereken</dt><dd>Program, ilerleme durumunuza göre düzenli olarak güncellenir.</dd></div>
+            </dl>
+            <p class="sc-act"><a class="btn" href="https://wa.me/905330481070?text=Merhaba%2C%20Klinik%20pilates%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click">Bu uygulama için yaz</a><a class="sc-more" href="hizmetler/klinik-pilates.html">Ayrıntılı bilgi</a></p>
+          </div>
+        </article><article class="sc-panel" role="tabpanel" id="sc-p3" aria-labelledby="sc-t3" style="--c:#e0a33a" inert>
+          <figure class="sc-fig"><img src="assets/renders/reformer-pilates.webp" alt="3D omurga modeli, bel bölgesi turuncu vurgulu, arka yandan görünüm" width="960" height="1200"></figure>
+          <div class="sc-copy">
+            <p class="sc-region"><i></i>Bel bölgesi</p>
+            <h3>Reformer pilates</h3>
+            <p class="sc-lead">Kayan bir platform, yaylar ve kayışlardan oluşan reformer aletiyle yapılan pilates egzersizleri.</p>
+            <dl class="sc-facts">
+              <div><dt>Nasıl uygulanır</dt><dd>Yay direnci düzeyinize göre ayarlanır; ilk seanslarda solunum ve gövde kaslarının konumlandırılması öğretilir.</dd></div>
+              <div><dt>Kimler için</dt><dd>Ortopedik rehabilitasyon sürecindeki ya da ağrı nedeniyle tüm vücut ağırlığıyla egzersizde zorlanan kişiler.</dd></div>
+              <div><dt>Bilmeniz gereken</dt><dd>Seanslar bireysel ya da en fazla iki kişilik planlanır.</dd></div>
+            </dl>
+            <p class="sc-act"><a class="btn" href="https://wa.me/905330481070?text=Merhaba%2C%20Reformer%20pilates%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click">Bu uygulama için yaz</a><a class="sc-more" href="hizmetler/reformer-pilates.html">Ayrıntılı bilgi</a></p>
+          </div>
+        </article><article class="sc-panel" role="tabpanel" id="sc-p4" aria-labelledby="sc-t4" style="--c:#d4708f" inert>
+          <figure class="sc-fig"><img src="assets/renders/pelvik-taban-visseral.webp" alt="3D omurga modeli, sakrum ve kuyruk sokumu pembe vurgulu" width="960" height="1200"></figure>
+          <div class="sc-copy">
+            <p class="sc-region"><i></i>Leğen bölgesi</p>
+            <h3>Pelvik taban ve visseral osteopati</h3>
+            <p class="sc-lead">Pelvik taban rehabilitasyonu ve karın-leğen bölgesine yönelik, elle uygulanan hafif teknikler.</p>
+            <dl class="sc-facts">
+              <div><dt>Nasıl uygulanır</dt><dd>Değerlendirmenin ardından kişiye göre planlanır.</dd></div>
+              <div><dt>Kimler için</dt><dd>Hekim değerlendirmesinden sonra uygun görülen kişiler.</dd></div>
+              <div><dt>Bilmeniz gereken</dt><dd>Organ sarkması, idrar kaçırma gibi yakınmaların tanı ve tedavisi hekim tarafından yapılır. Visseral osteopati bir hastalığın tedavisi olarak sunulmaz.</dd></div>
+            </dl>
+            <p class="sc-act"><a class="btn" href="https://wa.me/905330481070?text=Merhaba%2C%20Pelvik%20taban%20ve%20visseral%20osteopati%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click">Bu uygulama için yaz</a><a class="sc-more" href="hizmetler/visseral-osteopati.html">Ayrıntılı bilgi</a></p>
+          </div>
+        </article><article class="sc-panel" role="tabpanel" id="sc-p5" aria-labelledby="sc-t5" style="--c:#8dbb78" inert>
+          <figure class="sc-fig"><img src="assets/renders/fibromiyalji.webp" alt="3D omurga modeli, tüm bölgeler renkli, önden görünüm" width="960" height="1200"></figure>
+          <div class="sc-copy">
+            <p class="sc-region"><i></i>Tüm vücut</p>
+            <h3>Fibromiyalji</h3>
+            <p class="sc-lead">Yaygın ağrı, yorgunluk ve uyku sorunlarıyla seyreden fibromiyaljide güncel kılavuzlar egzersizi öne çıkarır.</p>
+            <dl class="sc-facts">
+              <div><dt>Nasıl uygulanır</dt><dd>Düşük yoğunlukta başlayıp toleransınıza göre kademeli artan, günlük yaşamınıza uygun bir egzersiz programı.</dd></div>
+              <div><dt>Kimler için</dt><dd>Hekim tarafından fibromiyalji tanısı konmuş kişiler.</dd></div>
+              <div><dt>Bilmeniz gereken</dt><dd>Tanıyı hekim koyar; egzersize verilen yanıt kişiden kişiye değişir.</dd></div>
+            </dl>
+            <p class="sc-act"><a class="btn" href="https://wa.me/905330481070?text=Merhaba%2C%20Fibromiyalji%20i%C3%A7in%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener" data-track="whatsapp_click">Bu uygulama için yaz</a><a class="sc-more" href="hizmetler/fibromiyalji.html">Ayrıntılı bilgi</a></p>
           </div>
         </article>
-        <article class="app" data-region="sirt">
-          <h3><a href="hizmetler/skolyoz-3d-schroth.html">Skolyoz · 3D Schroth</a></h3>
-          <div class="app-row flip">
-            <img loading="lazy" decoding="async" src="assets/vertebral-column-two-figures-showing-front-and.jpg" alt="Omurganın önden ve yandan görünüşü, gravür" width="742" height="1100">
-            <ul>
-              <li>Eğrilik tipine göre düzeltme pozisyonları</li>
-              <li>Gövdenin üç boyutlu uzatılması</li>
-              <li>Düzeltici solunum çalışmaları</li>
-              <li>Ortopedi hekiminin tanısı ve önerisiyle</li>
-            </ul>
-          </div>
-        </article>
-        <article class="app" data-region="boyun">
-          <h3><a href="hizmetler/klinik-pilates.html">Klinik pilates</a></h3>
-          <div class="app-row">
-            <img loading="lazy" decoding="async" src="assets/the-scapula-figures-1-2-and-the.jpg" alt="Kürek kemiği ve köprücük kemiği gravürü" width="775" height="1100">
-            <ul>
-              <li>Duruş analizi ve vücut ölçümleriyle başlar</li>
-              <li>Stabilizasyon, esneme ve dirençli egzersizler</li>
-              <li>Fizyoterapist gözetiminde, mat veya reformer</li>
-              <li>İlerlemeye göre düzenli güncellenir</li>
-            </ul>
-          </div>
-        </article>
-        <article class="app" data-region="bel">
-          <h3><a href="hizmetler/reformer-pilates.html">Reformer pilates</a></h3>
-          <div class="app-row flip">
-            <img loading="lazy" decoding="async" src="assets/muscles-and-bones-of-the-vertebral-column.jpg" class="crop-low" alt="Omurga kaslarının yakın gravürü" width="810" height="1100">
-            <ul>
-              <li>Yay direnci kişinin düzeyine göre ayarlanır</li>
-              <li>Önce solunum ve gövde kaslarının konumu</li>
-              <li>Bireysel ya da en fazla iki kişilik seans</li>
-              <li>Fizyoterapist eşliğinde</li>
-            </ul>
-          </div>
-        </article>
-        <article class="app" data-region="legen">
-          <h3><a href="hizmetler/visseral-osteopati.html">Pelvik taban ve visseral osteopati</a></h3>
-          <div class="app-row">
-            <img loading="lazy" decoding="async" src="assets/pelvis-seven-figures-line-engraving-by-campbell.jpg" alt="Leğen kemiğini yedi açıdan gösteren gravür" width="794" height="1100">
-            <ul>
-              <li>Pelvik taban rehabilitasyonu</li>
-              <li>Karın ve leğen bölgesine yönelik elle uygulanan teknikler</li>
-              <li>Bu bölgedeki yakınmaların tanısını hekim koyar</li>
-              <li>Mevcut tıbbi tedavinin yerine geçmez</li>
-            </ul>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
 
@@ -211,10 +238,6 @@
         <h2 id="h-ig">Bizi Instagram'da takip edin</h2>
         <p class="ig-handle"><a href="https://www.instagram.com/fzt.melikekoksal_fzt.erolpalaz/" target="_blank" rel="noopener" data-track="instagram_click">@fzt.<wbr>melikekoksal_<wbr>fzt.<wbr>erolpalaz</a></p>
         <p class="ig-text">Egzersiz önerileri, klinikten kareler ve duyurular. Sorularınızı Instagram'dan da yazabilirsiniz.</p>
-        <dl class="ig-stats">
-          <div><dt>Takipçi</dt><dd>4.800+</dd></div>
-          <div><dt>Paylaşım</dt><dd>180+</dd></div>
-        </dl>
         <a class="btn" href="https://www.instagram.com/fzt.melikekoksal_fzt.erolpalaz/" target="_blank" rel="noopener" data-track="instagram_click">Instagram'da takip et</a>
       </div>
     </section>
@@ -255,7 +278,7 @@
 
 <script src="assets/vendor/lenis.min.js"></script>
 <script type="importmap">{"imports":{"three":"./assets/vendor/three.module.min.js","three/addons/":"./assets/vendor/addons/"}}</script>
-<script type="module" src="spine3d.js?v=14"></script>
-<script src="script.js?v=14"></script>
+<script type="module" src="spine3d.js?v=17"></script>
+<script src="script.js?v=17"></script>
 </body>
 </html>

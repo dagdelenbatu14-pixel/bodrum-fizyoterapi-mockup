@@ -22,7 +22,7 @@
   }
 
   /* ---------- entrances ---------- */
-  const parts = document.body.classList.contains('sub') ? [] : document.querySelectorAll('main section:not(.visit) :is(h2:not(.sr), h3, p, li, .slip, img, .facts), main .foot p');
+  const parts = document.body.classList.contains('sub') ? [] : document.querySelectorAll('main section:not(.visit):not(.showcase) :is(h2:not(.sr), h3, p, li, .slip, img, .facts), main .foot p');
   if (!reduce && 'IntersectionObserver' in window) {
     document.documentElement.classList.add('anim');
     const seen = new IntersectionObserver(es => es.forEach(e => {
@@ -47,6 +47,24 @@
     if (q > 0 && q < 1) photo.style.transform = `scale(${1.08 - q * 0.08}) translateY(${(q - 0.5) * -24}px)`;
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+
+  /* ---------- applications showcase: tabs ---------- */
+  const tabs = [...document.querySelectorAll('.sc-tabs [role=tab]')];
+  const selectTab = (t, focus) => {
+    tabs.forEach(b => {
+      const on = b === t, p = document.getElementById(b.getAttribute('aria-controls'));
+      b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1;
+      p.classList.toggle('on', on); p.toggleAttribute('inert', !on);
+    });
+    if (focus) t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectTab(t));
+    t.addEventListener('keydown', e => {
+      const k = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+      if (k) { e.preventDefault(); selectTab(tabs[(i + k + tabs.length) % tabs.length], true); }
+    });
+  });
 
   /* ---------- appointment form: compose the WhatsApp message ---------- */
   const form = document.getElementById('bookForm');

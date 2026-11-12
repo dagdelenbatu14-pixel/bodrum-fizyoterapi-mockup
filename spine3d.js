@@ -49,7 +49,7 @@ document.querySelectorAll('.stop-region').forEach(el => {
 });
 
 // let the first screen paint before the scene is built
-await new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
+await new Promise(r => { requestAnimationFrame(() => setTimeout(r, 0)); setTimeout(r, 150); });   // background tabs get no frames
 
 const canvas = document.getElementById('bone');
 const tour = document.querySelector('.tour');
@@ -303,10 +303,11 @@ if (renderer) {
   let visible = true;
   new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(tour);
 
+  let shot = false;   // still renders for the applications showcase (?shots in the URL)
   const clock = new THREE.Clock();
   function frame() {
     requestAnimationFrame(frame);
-    if (!visible) return;
+    if (!visible || shot) return;
     const dt = Math.min(clock.getDelta(), 0.05);
     s = reduce ? 0 : progress() * N;
     sSmooth = reduce ? s : lerp(sSmooth, s, 1 - Math.pow(0.0015, dt));
@@ -380,4 +381,31 @@ if (renderer) {
     });
   }
   frame();
+
+  if (new URLSearchParams(location.search).has('shots')) {
+    window.__regionY = regionY;
+    window.__render = ({ y = 0, d = 20, yaw = -1, region = null, w = 1200, h = 1200, tilt = 0.08, x = 0, tx = 0 }) => {
+      shot = true;
+      document.querySelectorAll('.spot').forEach(el => { el.style.opacity = '0'; });
+      renderer.setPixelRatio(1); renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.clearViewOffset(); camera.updateProjectionMatrix();
+      spine.rotation.y = yaw;
+      ORDER.forEach(k => mats[k].forEach(m => {
+        const v = region === 'all' ? 0.5 : k === region ? 1 : 0;
+        if (!m.userData.base) { m.userData.base = m.color.clone(); m.userData.tint = new THREE.Color(COLORS[k]); }
+        m.color.lerpColors(m.userData.base, m.userData.tint, v * (m.isMeshPhysicalMaterial ? 0.95 : 0.85));
+        m.emissiveIntensity = v * (m.isMeshPhysicalMaterial ? 0.5 : 0.22);
+      }));
+      // centre the frame on what is lit (or the whole column)
+      spine.updateMatrixWorld(true);
+      const fb = new THREE.Box3();
+      (region && region !== 'all' ? parts[region] : [spine]).forEach(o => fb.expandByObject(o));
+      const fc = fb.getCenter(new THREE.Vector3());
+      tx = fc.x; if (region && region !== 'all') y = fc.y; else y = fc.y;
+      camera.position.set(tx + x, y + d * tilt, d); camera.lookAt(tx, y, 0);
+      scene.fog.near = d + 12; scene.fog.far = d + 70;
+      renderer.render(scene, camera);
+      return canvas.toDataURL('image/webp', 0.86);
+    };
+  }
 }
