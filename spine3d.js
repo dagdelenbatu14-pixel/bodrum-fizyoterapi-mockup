@@ -7,21 +7,21 @@ const REGIONS = {
     code: 'C1–C7', title: 'Boyun', count: '7 omur',
     text: 'Masa başında uzun çalışmaya bağlı boyun ve sırt ağrısı, baş ve boyun ağrıları, boyun fıtığıyla ilişkili ağrılar.',
     apps: ['Osteopatik manuel terapi', 'Klinik pilates'],
-    read: ['https://fztmelikekoksalpalaz.com/bilgi/masa-basi-boyun-agrisi.html', 'Masa başı boyun ağrısı'],
+    read: ['bilgi/masa-basi-boyun-agrisi.html', 'Masa başı boyun ağrısı'],
     spots: [['disc', 'Disk'], ['root', 'Sinir kökü'], ['spine', 'Dikensi çıkıntı']]
   },
   sirt: {
     code: 'T1–T12', title: 'Sırt', count: '12 omur',
     text: 'Skolyoz, yani omurganın üç boyutlu eğriliği; duruş ve iş yüküyle ilişkili kas gerginliği; omuz ağrıları.',
     apps: ['Skolyoz · 3D Schroth', 'Klinik pilates', 'Reformer pilates'],
-    read: ['https://fztmelikekoksalpalaz.com/bilgi/skolyoz.html', 'Skolyoz nedir?'],
+    read: ['bilgi/skolyoz.html', 'Skolyoz nedir?'],
     spots: [['body', 'Omur gövdesi'], ['spine', 'Dikensi çıkıntı'], ['disc', 'Disk']]
   },
   bel: {
     code: 'L1–L5', title: 'Bel', count: '5 omur',
     text: 'Bel fıtığıyla ilişkili ağrılar, uzun süren bel ağrısı ve kas spazmları.',
     apps: ['Osteopatik manuel terapi', 'Klinik pilates', 'Reformer pilates'],
-    read: ['https://fztmelikekoksalpalaz.com/bilgi/bel-boyun-fitigi.html', 'Bel ve boyun fıtığı'],
+    read: ['bilgi/bel-boyun-fitigi.html', 'Bel ve boyun fıtığı'],
     spots: [['disc', 'Disk'], ['root', 'Sinir kökü'], ['facet', 'Faset eklem']]
   },
   legen: {
