@@ -335,3 +335,6 @@ html.rm .tour-nav, html.rm .scroll-hint, html.rm .hotspots { display: none; }
 .en-note { margin-top: 20px; }
 .prose.solo .names li { padding: 14px 0; }
 @media (max-width: 900px) { .en-plate { justify-self: start; max-width: 240px; } }
+.prose a.btn, .prose a.btn:hover { color: var(--accent-ink); }
+.prose h3 { font-size: 1.4rem; }
+.side h2 { font-size: 1.7rem; }
