@@ -418,3 +418,4 @@ html.rm .tour-nav, html.rm .scroll-hint, html.rm .hotspots { display: none; }
   .sc-fig { aspect-ratio: 4 / 3.4; }
   .sc-fig img { object-position: 50% 40%; }
 }
+.en-plate { border-radius: 10px; }
