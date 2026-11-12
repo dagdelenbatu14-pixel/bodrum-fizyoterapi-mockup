@@ -338,3 +338,26 @@ html.rm .tour-nav, html.rm .scroll-hint, html.rm .hotspots { display: none; }
 .prose a.btn, .prose a.btn:hover { color: var(--accent-ink); }
 .prose h3 { font-size: 1.4rem; }
 .side h2 { font-size: 1.7rem; }
+
+/* Instagram band */
+.ig-band { margin-inline: calc(50% - 50vw); background: var(--ink); color: var(--bg); padding: 120px var(--m); }
+.ig-inner { max-width: 64rem; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 16px 48px; align-items: end; }
+.ig-band h2 { font-size: var(--step-head); grid-column: 1 / -1; color: #f3ede2; }
+.ig-handle { grid-column: 1 / -1; margin: 8px 0 8px; font-size: clamp(1.5rem, 0.9rem + 2.2vw, 2.6rem); letter-spacing: -0.02em; }
+.ig-handle a { color: #d9a0b4; text-decoration: none; }
+.ig-handle a:hover { text-decoration: underline; }
+.ig-text { margin: 0; color: #e6ddcf; max-width: 34ch; }
+.ig-stats { display: flex; gap: 40px; margin: 8px 0 0; }
+.ig-stats dt { font-size: var(--step-small); color: #b7ab9b; }
+.ig-stats dd { margin: 2px 0 0; font-size: var(--step-head); line-height: 1; color: #f3ede2; }
+.ig-band .btn { justify-self: start; }
+.stop-hero .ig-link { color: #d9a0b4; font-weight: 500; }
+@media (max-width: 900px) {
+  .ig-band { padding: 88px var(--m); }
+  .ig-inner { grid-template-columns: 1fr; }
+  .stop-hero .ig-link { display: none; }
+}
+.side-ig { margin: 18px 0 0; padding: 14px 16px; background: var(--ink); border-radius: 6px; font-size: .95rem; line-height: 1.45; }
+.side-ig a { color: var(--bg); text-decoration: none; display: block; }
+.side-ig b { color: #d9a0b4; font-weight: 600; }
+.side-ig a:hover b { text-decoration: underline; }
