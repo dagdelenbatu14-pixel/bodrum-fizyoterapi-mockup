@@ -75,7 +75,7 @@ if (renderer) {
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
   scene.environmentIntensity = 0.45;
 
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 400);
   const key = new THREE.DirectionalLight('#fff1dc', 2.6); key.position.set(6, 10, 9); scene.add(key);
   const rim = new THREE.DirectionalLight('#8fb3ff', 1.6); rim.position.set(-8, 4, -10); scene.add(rim);
   const fill = new THREE.DirectionalLight('#ffd7b0', 0.5); fill.position.set(-6, -6, 6); scene.add(fill);
