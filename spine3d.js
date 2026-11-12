@@ -318,6 +318,7 @@ if (renderer) {
 
     const ty = lerp(A.y, B.y, f), d = lerp(A.d * (A.r && !wide ? 1.35 : 1), B.d * (B.r && !wide ? 1.35 : 1), f);
     camTgt.set(0, ty, 0);
+    scene.fog.near = d + 12; scene.fog.far = d + 70;   // fog follows the camera so a far overview is never washed out
     camPos.set(0, ty + d * 0.08, d);
     // a slow drift so held frames breathe
     camPos.x += Math.sin(clock.elapsedTime * 0.25) * 0.35;
