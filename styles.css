@@ -63,8 +63,9 @@ h1, h2, h3 { font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; margi
 #bone { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; }
 .bone-fallback { display: none; }
 html:not(.has-3d) .bone-fallback { display: block; position: absolute; right: 6vw; top: 80px; height: calc(100svh - 120px); width: auto; opacity: .85; }
+.stop-hero { opacity: 1; visibility: visible; }
 .stop { position: absolute; left: var(--m); bottom: clamp(88px, 12svh, 140px); width: min(34rem, 42vw); opacity: 0; visibility: hidden; will-change: opacity, transform; }
-html:not(.has-3d) .stop-hero { opacity: 1; visibility: visible; }
+html:not(.has-3d) .stop-hero, .stop.stop-hero:not([style]) { opacity: 1; visibility: visible; }
 .stop-hero .name { font-size: clamp(3.6rem, 1rem + 7vw, 8.4rem); letter-spacing: -0.045em; line-height: .92; color: #f3ede2; }
 .stop-hero .lead { font-size: var(--step-lead); line-height: 1.4; margin: 28px 0 28px; max-width: 30ch; color: #e6ddcf; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }

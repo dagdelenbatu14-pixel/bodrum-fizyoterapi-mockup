@@ -48,6 +48,9 @@ document.querySelectorAll('.stop-region').forEach(el => {
     (R.read ? `<a class="read" href="${R.read[0]}">${R.read[1]}</a>` : '') + `</p>`;
 });
 
+// let the first screen paint before the scene is built
+await new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
+
 const canvas = document.getElementById('bone');
 const tour = document.querySelector('.tour');
 const stops = [...document.querySelectorAll('.stop')];
