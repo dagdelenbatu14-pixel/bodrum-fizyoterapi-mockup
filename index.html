@@ -25,34 +25,47 @@
   </nav>
 </header>
 
-<div class="page" id="ust">
-  <!-- Fixed half: the spine -->
-  <aside class="stage" aria-labelledby="h-omurga">
-    <h2 class="stage-head" id="h-omurga">Omurga haritası</h2>
-    <div class="spine-wrap">
-      <div class="spine-box">
-      <svg id="spine" viewBox="0 0 420 1180" role="group" aria-label="Omurga: bir bölgeye dokunun"></svg>
-      <img class="spine-fallback" src="assets/vertebral-column-two-figures-showing-front-and.jpg" alt="Omurganın önden ve yandan görünüşü, 19. yüzyıl gravürü" width="742" height="1100">
-      <div class="labels" id="labels"></div>
-      </div>
-    </div>
-    <div class="region-card" id="regionCard" aria-live="polite">
-      <h2 class="rc-title">Nereniz ağrıyor?</h2>
-      <p class="rc-hint">Omurgada bir bölgeye dokunun; o bölge için birimde yürütülen uygulamaları görün.</p>
-    </div>
-  </aside>
+<section class="tour" id="ust" aria-labelledby="h-name">
+  <div class="tour-stage">
+    <canvas id="bone" aria-hidden="true"></canvas>
+    <img class="bone-fallback" src="assets/vertebral-column-two-figures-showing-front-and.jpg" alt="Omurganın önden ve yandan görünüşü, 19. yüzyıl gravürü" width="742" height="1100">
+    <div class="hotspots" id="hotspots" aria-hidden="true"></div>
 
-  <main class="col" id="icerik">
-    <section class="hero">
-      <h1 class="name">bodrum fizyoterapi</h1>
+    <div class="stop stop-hero" data-stop="0">
+      <h1 id="h-name" class="name">bodrum fizyoterapi</h1>
       <p class="lead">Bitez'de üç fizyoterapistin görev yaptığı sağlık meslek hizmet birimi. Her program, hekiminizin tanısı ve yönlendirmesiyle başlar.</p>
       <div class="actions">
-        <a class="btn" id="heroWa" href="https://wa.me/905330481070?text=Merhaba%2C%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan randevu</a>
+        <a class="btn" href="https://wa.me/905330481070?text=Merhaba%2C%20de%C4%9Ferlendirme%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan randevu</a>
         <a class="link-strong" href="tel:+905330481070">0533 048 10 70</a>
       </div>
+    </div>
+
+    <div class="stop stop-region" data-stop="1" data-r="boyun"></div>
+    <div class="stop stop-region" data-stop="2" data-r="sirt"></div>
+    <div class="stop stop-region" data-stop="3" data-r="bel"></div>
+    <div class="stop stop-region" data-stop="4" data-r="legen"></div>
+    <div class="stop stop-end" data-stop="5">
+      <h2>Nereniz ağrıyor?</h2>
+      <p>Omurgaya dokunun, kamera o bölgeye insin.</p>
+    </div>
+
+    <nav class="tour-nav" aria-label="Omurga bölgeleri">
+      <button type="button" data-go="0">Genel</button>
+      <button type="button" data-go="1">Boyun</button>
+      <button type="button" data-go="2">Sırt</button>
+      <button type="button" data-go="3">Bel</button>
+      <button type="button" data-go="4">Leğen</button>
+    </nav>
+    <p class="scroll-hint" aria-hidden="true">Kaydırın</p>
+  </div>
+</section>
+
+<main class="content" id="icerik">
+    <section class="facts-band" aria-label="Adres ve saatler">
       <dl class="facts">
         <div><dt>Adres</dt><dd>Güneri İş Merkezi 6/2, Kavaklı Sarnıç Caddesi, Bitez</dd></div>
         <div><dt>Saatler</dt><dd>Pazartesi–Cuma, 09.00–19.00</dd></div>
+        <div><dt>Telefon</dt><dd><a href="tel:+905330481070">0533 048 10 70</a></dd></div>
       </dl>
     </section>
 
@@ -95,7 +108,7 @@
         <article class="app" data-region="bel">
           <h3>Osteopatik manuel terapi</h3>
           <div class="app-row">
-            <img src="assets/muscles-and-bones-of-the-vertebral-column.jpg" alt="Omurga kas ve kemiklerini gösteren gravür" width="810" height="1100" loading="lazy">
+            <img src="assets/muscles-and-bones-of-the-vertebral-column.jpg" alt="Omurga kas ve kemiklerini gösteren gravür" width="810" height="1100">
             <ul>
               <li>Omurga ve eklemlerde ağrı ve hareket kısıtlılığı</li>
               <li>Eklem mobilizasyonu, yumuşak doku ve germe teknikleri</li>
@@ -107,7 +120,7 @@
         <article class="app" data-region="sirt">
           <h3>Skolyoz · 3D Schroth</h3>
           <div class="app-row flip">
-            <img src="assets/vertebral-column-two-figures-showing-front-and.jpg" alt="Omurganın önden ve yandan görünüşü, gravür" width="742" height="1100" loading="lazy">
+            <img src="assets/vertebral-column-two-figures-showing-front-and.jpg" alt="Omurganın önden ve yandan görünüşü, gravür" width="742" height="1100">
             <ul>
               <li>Eğrilik tipine göre düzeltme pozisyonları</li>
               <li>Gövdenin üç boyutlu uzatılması</li>
@@ -119,7 +132,7 @@
         <article class="app" data-region="boyun">
           <h3>Klinik pilates</h3>
           <div class="app-row">
-            <img src="assets/the-scapula-figures-1-2-and-the.jpg" alt="Kürek kemiği ve köprücük kemiği gravürü" width="775" height="1100" loading="lazy">
+            <img src="assets/the-scapula-figures-1-2-and-the.jpg" alt="Kürek kemiği ve köprücük kemiği gravürü" width="775" height="1100">
             <ul>
               <li>Duruş analizi ve vücut ölçümleriyle başlar</li>
               <li>Stabilizasyon, esneme ve dirençli egzersizler</li>
@@ -131,7 +144,7 @@
         <article class="app" data-region="bel">
           <h3>Reformer pilates</h3>
           <div class="app-row flip">
-            <img src="assets/muscles-and-bones-of-the-vertebral-column.jpg" class="crop-low" alt="Omurga kaslarının yakın gravürü" width="810" height="1100" loading="lazy">
+            <img src="assets/muscles-and-bones-of-the-vertebral-column.jpg" class="crop-low" alt="Omurga kaslarının yakın gravürü" width="810" height="1100">
             <ul>
               <li>Yay direnci kişinin düzeyine göre ayarlanır</li>
               <li>Önce solunum ve gövde kaslarının konumu</li>
@@ -143,7 +156,7 @@
         <article class="app" data-region="legen">
           <h3>Pelvik taban ve visseral osteopati</h3>
           <div class="app-row">
-            <img src="assets/pelvis-seven-figures-line-engraving-by-campbell.jpg" alt="Leğen kemiğini yedi açıdan gösteren gravür" width="794" height="1100" loading="lazy">
+            <img src="assets/pelvis-seven-figures-line-engraving-by-campbell.jpg" alt="Leğen kemiğini yedi açıdan gösteren gravür" width="794" height="1100">
             <ul>
               <li>Pelvik taban rehabilitasyonu</li>
               <li>Karın ve leğen bölgesine yönelik elle uygulanan teknikler</li>
@@ -188,7 +201,7 @@
     </section>
 
     <section class="visit" id="ziyaret" data-region="legen" aria-labelledby="h-ziyaret">
-      <img class="visit-photo" src="assets/bitez-bodrum.jpg" alt="Bitez koyunda gün batımı, tekneler" width="1200" height="1600" loading="lazy">
+      <img class="visit-photo" src="assets/bitez-bodrum.jpg" alt="Bitez koyunda gün batımı, tekneler" width="1200" height="1600">
       <div class="card">
         <h2 id="h-ziyaret">Randevu ve adres</h2>
         <p class="addr">Güneri İş Merkezi, No: 6/2<br>Kavaklı Sarnıç Caddesi, Bitez<br>48400 Bodrum / Muğla</p>
@@ -219,10 +232,11 @@
       <p class="fine credits">Görseller: Wellcome Collection gravürleri (omurga, kürek kemiği, leğen, omurga kasları), CC BY 4.0, Wikimedia Commons · “Bitez, Bodrum”, Kaan Başarr, CC BY 4.0, Wikimedia Commons.</p>
       <p class="fine">Tasarım önizlemesi · hazırlayan <a href="https://dagdelenbatu14-pixel.github.io/bat-u/">Batuhan Dağdelen</a> · 2026</p>
     </footer>
-  </main>
-</div>
+</main>
 
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script type="importmap">{"imports":{"three":"./assets/vendor/three.module.min.js","three/addons/":"./assets/vendor/addons/"}}</script>
+<script type="module" src="spine3d.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
