@@ -248,7 +248,7 @@ if (renderer) {
     renderer.setSize(W, H, false);
     camera.aspect = W / H; camera.updateProjectionMatrix();
     // overview distance: the whole column between the bar and the region buttons (phones: above the text panel)
-    const room = wide ? (H - 64 - 96) / H : 0.42;
+    const room = wide ? (H - 64 - 96) / H : 0.34;
     const fit = (spineH / 2 + 0.8) / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / room;
     STOPS[0].d = fit; STOPS[5].d = fit * 0.94;
     STOPS[0].y = STOPS[5].y = wide ? 0.6 : 0;
@@ -325,7 +325,7 @@ if (renderer) {
 
     // push the subject to the right of the text on wide screens, up on phones
     if (wide) camera.setViewOffset(W, H, -W * 0.2, 0, W, H);
-    else camera.setViewOffset(W, H, 0, H * 0.27, W, H);
+    else camera.setViewOffset(W, H, 0, H * 0.25, W, H);
 
     // which stop are we at
     const near = Math.round(s), off = Math.abs(s - near);   // text follows the scroll exactly; the camera eases behind it
